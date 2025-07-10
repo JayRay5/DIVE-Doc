@@ -8,8 +8,8 @@
 .cache/
 *ipynb
 *.arrow
-docvqa/
-infographvqa/
+data/docvqa/
+data/infographvqa/
 experiments/*
 results/*
 *.sh
