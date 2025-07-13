@@ -107,7 +107,7 @@ You can set which student configuration you want or set a new one in
 ```bash
 ./trainning/docvqa/config.py
 ```
-To start the distillation script: 
+Then, start the distillation script: 
 ```bash
 cd training/docvqa
 python distillation_stage1.py #the script will create a new forlder in ./experiments which will contain the weights of this training stage
