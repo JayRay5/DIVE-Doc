@@ -14,38 +14,17 @@
 
 ---
 
-## Abstract
+## Description
 
 In the DocVQA context, current end-to-end models either use lightweight architectures that run efficiently on small devices but have limited performance or rely on LVLMs that achieve high performance at significant computational cost. Thus, we present **DIVE-Doc**, an end-to-end model that bridges this gap by distilling a 400M-parameter SigLIP visual encoder into a small hierarchical Swin transformer, preserving LVLM performance with only one-fifth of the visual encoder's parameters. We investigate two distillation strategies: Fixed-Resolution Distillation (FRD), which matches teacher–student patch counts by forcing student input resolution, and Adaptive-Resolution Distillation (ARD), which aligns mismatched sequences via parameter-free interpolation, enabling various input resolutions. Fine-tuned with QLoRA, DIVE-Doc attains 82.7% ANLS, outperforming lightweight models and sitting within 2 ANLS of its teacher PaliGEMMA on DocVQA, while halving its visual encoder's latency and supporting higher input resolutions. Analysis on RVL-CDIP and DocLayNet shows that the visual encoder captures document-level structure but delegates fine-grained layout reasoning to the language model decoder.
 
----
-
-## Key Features
-
-* **Efficient LVLM for DocVQA:** Introduces DIVE-Doc, a novel end-to-end model designed for efficient DocVQA in resource-constrained environments.
-* **Knowledge Distillation:** Effectively distills a large 400M-parameter SigLIP visual encoder into a compact hierarchical Swin transformer.
-* **Significant Parameter Reduction:** Achieves competitive LVLM performance with only one-fifth (75M) of the teacher visual encoder's parameters.
-* **Novel Distillation Strategies:** Explores and evaluates two distinct approaches:
-    * **Fixed-Resolution Distillation (FRD):** Matches teacher-student patch counts by enforcing specific student input resolutions.
-    * **Adaptive-Resolution Distillation (ARD):** Aligns mismatched sequences using parameter-free interpolation, supporting diverse input resolutions.
-* **Competitive Performance:** Achieves 82.7% ANLS on DocVQA, outperforming lightweight models and remaining within 2 ANLS points of its larger teacher (PaliGEMMA).
-* **Enhanced Efficiency:** Halves the visual encoder's latency compared to the teacher model.
-* **Flexible Input Handling:** Supports higher and various input resolutions, making it more adaptable.
-* **Architectural Insights:** Provides analysis on the role of the visual encoder (capturing document-level structure) vs. the language model decoder (handling fine-grained layout reasoning).
-
----
-
-## Model Overview
-
-DIVE-Doc is an end-to-end model designed for Document Visual Question Answering. It consists of a distilled visual encoder (a small hierarchical Swin Transformer) paired with a language model decoder. The core idea is to leverage knowledge distillation to transfer the strong representational power of a large foundational vision model (SigLIP) to a much smaller, more efficient architecture suitable for document understanding tasks.
-
+## Demo
 
 
 ## Performance & Efficiency
-
+|                             |                      |              |                |            | **Model Configuration**                                 | **Results (ANLS) ↑** 
 | Method                       |                      | #Params (VE) | #Params Total | OCR        | General     | Figure     | Free-text  | Picture    | Layout     |
-|-----------------------------|----------------------|--------------|----------------|------------|-------------|------------|------------|------------|------------|
-|                             |                      |              |                |            | **Model Configuration**                                 | **Results (ANLS) ↑**                                |
+|-----------------------------|----------------------|--------------|----------------|------------|-------------|------------|------------|------------|------------|                               |
 | **PaliGEMMA**               |                      | 0.4(B)       | 3(B)           |            | 84.77       | 65.43      | 80.99      | 73.82      | 87.33      |
 | **UDOP**                    |                      | -            | 0.8(B)         | ✓          | 84.70       | -          | -          | -          | -          |
 | **LayoutLMv3**              |                      | -            | 0.133(B)       | ✓          | 78.76       | -          | -          | -          | -          |
