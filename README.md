@@ -49,7 +49,37 @@ To set up the development environment, follow these steps:
     *(Note: A `requirements.txt` file detailing all necessary libraries will be provided in the repository.)*
     
 ## Repositorie Description
+```bash
+├── data
+│   ├── docvqa
+    |   ├── build_image_dataset.py
+│   |   ├── build_image_embeddings.py
+│   |   ├── utils.py
+│   |          .
+│   |          .
+|   ├── doc-cls
+|   |          .
+|   |          .
+|   ├── dla
+|      
+|            .
+|            .
+├── models #contains model files
+│   ├── config_divedoc.py
+│   ├── lightning_modules.py
+│   ├── model.py
+|   ├── visual_encoders.py
+│             .
+│             .
+└── training
+    ├── docvqa #contrains script for training and evaluation of model
+    |    ├── config.py # use to set the VE architecture of the student & hyperparameters for the distillation stage
+    |    ...
+    ├── doc-cls
+    ├── dla
 
+```
+[model implementation](src/model/model.py)
 ## Training & Evaluation
 
 ### DocVQA
