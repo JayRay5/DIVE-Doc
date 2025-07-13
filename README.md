@@ -49,6 +49,7 @@ To set up the development environment, follow these steps:
     *(Note: A `requirements.txt` file detailing all necessary libraries will be provided in the repository.)*
     
 ## Repositorie Description
+```bash
 ├── data
 │   ├── docvqa
 |   |   ├── build_image_dataset.py #generate image from the docvqa dataset without dupplicated samples for the distillation stage
@@ -88,6 +89,7 @@ To set up the development environment, follow these steps:
     |
     ├── dla
 
+```
 ## Training & Evaluation
 
 ### DocVQA
