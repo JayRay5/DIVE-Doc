@@ -47,10 +47,22 @@ To set up the development environment, follow these steps:
     pip install -r requirements.txt
     ```
     *(Note: A `requirements.txt` file detailing all necessary libraries will be provided in the repository.)*
-
+    
+## Repositorie Description
 
 ## Training & Evaluation
 
+### DocVQA
+1. **Dataset**
+```bash
+
+```
+2. Distillation stage
+3. Finetuning stage
+
+### Document Classification
+
+### Document Layout Analysis 
 
 ## Citation
 
