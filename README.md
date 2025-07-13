@@ -53,8 +53,8 @@ To set up the development environment, follow these steps:
 DIVE-Doc
 ├── data
 │   ├── docvqa
-|   |   ├── build_image_dataset.py #generate image from the docvqa dataset without dupplicated samples for the distillation stage
-│   |   ├── build_image_embeddings.py #generate embeddings of the teacher paligemma for the distillation stage
+|   |   ├── build_image_dataset.py #generate image from the docvqa dataset without dupplicated samples for the distillation stage.
+│   |   ├── build_image_embeddings.py #generate embeddings of the teacher paligemma for the distillation stage.
 │   |   └── utils.py       
 │   |          
 |   ├── doc-cls
@@ -66,23 +66,23 @@ DIVE-Doc
 |            .
 |
 |
-├── experiments #contains model weights and results of the runned experiments
+├── experiments #contains saved models and results of the runned experiments
 |            .
 |            .
 |
-├── models #contains model files
-│   ├── config_divedoc.py #contains config classes for huggingface models
-│   ├── lightning_modules.py #contains lightning torch classes for the distillation stage
-│   ├── model.py #contains huggingface models
-|   ├── visual_encoders.py #contains torch visual encoder models
+├── models 
+│   ├── config_divedoc.py #contains config classes for huggingface models.
+│   ├── lightning_modules.py #contains lightning torch classes for the distillation stage.
+│   ├── model.py #contains huggingface models.
+|   ├── visual_encoders.py #contains torch visual encoder models.
 │             .
 │             .
 └── training
-    ├── docvqa #contrains script for training and evaluation of model
-    |    ├── config.py #use to set the VE architecture of the student & hyperparameters for the distillation stage
-    |    ├── distillation_stage1.py #pipeline training for the distillation stage
-    |    ├── evaluation.py #generate answer for the docvqa test set
-    |    └── finetuning_stage2.py #pipeline training for the end-to-end finetuning stage
+    ├── docvqa #contrains script for training and evaluation of model.
+    |    ├── config.py #use to set the VE architecture of the student & hyperparameters for the distillation stage.
+    |    ├── distillation_stage1.py #pipeline training for the distillation stage.
+    |    ├── evaluation.py #generate answer for the docvqa test set.
+    |    └── finetuning_stage2.py #pipeline training for the end-to-end finetuning stage.
     |
     ├── doc-cls
     |
