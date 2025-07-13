@@ -34,7 +34,7 @@ To set up the development environment, follow these steps:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/yourusername/DIVE-Doc.git](https://github.com/yourusername/DIVE-Doc.git)
+    git clone [https://github.com/JayRay5/DIVE-Doc](https://github.com/JayRay5/DIVE-Doc)
     cd DIVE-Doc
     ```
 2.  **Create a conda environment (recommended):**
@@ -107,7 +107,7 @@ You can set which student configuration you want or set a new one in
 ```bash
 ./trainning/docvqa/config.py
 ```
-
+To start the distillation script: 
 ```bash
 cd training/docvqa
 python distillation_stage1.py #the script will create a new forlder in ./experiments which will contain the weights of this training stage
@@ -119,7 +119,7 @@ python finetuning_stage2.py #You have to put the path of the folder create by th
 4. **Evaluation** <br>
 You can evaluate the distillation stage model or the final model with the following script my inserting the model path in the experiment folder.
 ```bash
-python evaluation.py #You have to put the path of the folder create by the distillation pipeline in this script
+python evaluation.py
 ```
 ### Document Classification
 
