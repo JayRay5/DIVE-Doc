@@ -28,7 +28,7 @@ In the DocVQA context, current end-to-end models either use lightweight architec
 
 
 
-## Intallation
+## Installation
 
 To set up the development environment, follow these steps:
 
@@ -52,15 +52,15 @@ To set up the development environment, follow these steps:
 ```bash
 DIVE-Doc
 ├── data
-│  ├── docvqa
-|  |   ├── build_image_dataset.py #generate image from the docvqa dataset without dupplicated samples for the distillation stage.
-│  |   ├── build_image_embeddings.py #generate embeddings of the teacher paligemma for the distillation stage.
-│  |   └── utils.py       
-│  |          
-|  ├── doc-cls
-|  |        .
-|  |        .
-|  ├── dla
+│   ├── docvqa
+|   |   ├── build_image_dataset.py #generate image from the docvqa dataset without dupplicated samples for the distillation stage.
+│   |   ├── build_image_embeddings.py #generate embeddings of the teacher paligemma for the distillation stage.
+│   |   └── utils.py       
+│   |          
+|   ├── doc-cls
+|   |        .
+|   |        .
+|   ├── dla
 |      
 |            .
 |            .
@@ -78,18 +78,20 @@ DIVE-Doc
 │             .
 │             .
 └── training
-    ├── docvqa #contrains script for training and evaluation of model.
-    |    ├── config.py #use to set the VE architecture of the student & hyperparameters for the distillation stage.
-    |    ├── distillation_stage1.py #pipeline training for the distillation stage.
-    |    ├── evaluation.py #generate answer for the docvqa test set.
-    |    └── finetuning_stage2.py #pipeline training for the end-to-end finetuning stage.
-    |
-    ├── doc-cls
-    |
-    |
-    |
-    ├── dla
-
+|   ├── docvqa #contrains script for training and evaluation of model.
+|   |    ├── config.py #use to set the VE architecture of the student & hyperparameters for the distillation stage.
+|   |    ├── distillation_stage1.py #pipeline training for the distillation stage.
+|   |    ├── evaluation.py #generate answer for the docvqa test set.
+|   |    └── finetuning_stage2.py #pipeline training for the end-to-end finetuning stage.
+|   |
+|   ├── doc-cls
+|   |
+|   |
+|   |
+|   ├── dla
+|
+├── app.py #pipeline to use the model in inference with a web gradio interface
+└── token.json #add inside a hugging face token to be able to access to the teacher model from huggingface
 ```
 ## Training & Evaluation
 
