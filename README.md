@@ -39,38 +39,24 @@ In the DocVQA context, current end-to-end models either use lightweight architec
 
 DIVE-Doc is an end-to-end model designed for Document Visual Question Answering. It consists of a distilled visual encoder (a small hierarchical Swin Transformer) paired with a language model decoder. The core idea is to leverage knowledge distillation to transfer the strong representational power of a large foundational vision model (SigLIP) to a much smaller, more efficient architecture suitable for document understanding tasks.
 
----
 
-## Distillation Strategies
-
-We propose and investigate two distinct knowledge distillation strategies tailored for transferring knowledge from large pre-trained visual encoders to smaller, hierarchical student models:
-
-1.  ### Fixed-Resolution Distillation (FRD)
-    * **Approach:** This strategy involves training the student model with a fixed input resolution designed to directly match the patch count of the teacher's output sequence. This "forces" the student to learn representations that align directly with the teacher's at a specific resolution.
-    * **Characteristics:** Simpler alignment, potentially less flexible in handling varying input sizes post-training.
-
-2.  ### Adaptive-Resolution Distillation (ARD)
-    * **Approach:** ARD addresses the challenge of mismatched sequence lengths between the teacher and student models (e.g., when the student processes different input resolutions). It uses parameter-free interpolation to align the feature sequences, allowing the student to be trained and perform effectively across various input resolutions.
-    * **Characteristics:** Offers greater flexibility in deployment across different resolution settings, making it highly suitable for diverse real-world scenarios.
-
----
 
 ## Performance & Efficiency
 
-DIVE-Doc demonstrates a compelling trade-off between performance and efficiency on the DocVQA task:
+| Method                       |                      | #Params (VE) | #Params Total | OCR        | General     | Figure     | Free-text  | Picture    | Layout     |
+|-----------------------------|----------------------|--------------|----------------|------------|-------------|------------|------------|------------|------------|
+|                             |                      |              |                |            | **Model Configuration**                                 | **Results (ANLS) ↑**                                |
+| **PaliGEMMA**               |                      | 0.4(B)       | 3(B)           |            | 84.77       | 65.43      | 80.99      | 73.82      | 87.33      |
+| **UDOP**                    |                      | -            | 0.8(B)         | ✓          | 84.70       | -          | -          | -          | -          |
+| **LayoutLMv3**              |                      | -            | 0.133(B)       | ✓          | 78.76       | -          | -          | -          | -          |
+| **Donut**                   |                      | 0.075(B)     | 0.2(B)         |            | 66.26       | 39.60      | 46.43      | 29.69      | 69.87      |
+| **Dessurt**                 |                      |              | 0.127(B)       |            | 63.22       | 31.64      | 48.52      | 28.62      | 64.86      |
+| **DIVE-Doc (FRD)**          |                      | 0.075(B)     | 2.58(B)        |            | **82.67**   | 59.33      | **78.83**  | 49.96      | 85.00      |
+| **DIVE-Doc (ARD/HRes)**     |                      | 0.075(B)     | 2.58(B)        |            | 82.63       | **61.48**  | 77.64      | **58.68**  | **85.34**  |
+| **DIVE-Doc (ARD/LRes)**     |                      | 0.075(B)     | 2.58(B)        |            | 79.26       | 54.94      | 74.54      | 58.28      | 83.15      |
 
-* **ANLS Score:** Achieves **82.7% ANLS** on DocVQA.
-* **Teacher Comparison:** Sits within **2 ANLS points** of its teacher, PaliGEMMA (84.77% ANLS).
-* **Lightweight Model Comparison:** Significantly **outperforms lightweight models** (e.g., Donut: 66.26% ANLS, Dessurt: 63.22% ANLS).
-* **Parameter Reduction:** The distilled visual encoder is **one-fifth the size** of the teacher's (75M parameters vs. 400M).
-* **Latency Improvement:** **Halves the visual encoder's latency** compared to the teacher.
-* **VRAM Footprint:** Achieves competitive performance while **halving the VRAM footprint**, making it more suitable for resource-constrained environments.
 
-Further analysis on RVL-CDIP and DocLayNet indicates that DIVE-Doc's visual encoder effectively captures document-level structural information, while the fine-grained layout reasoning is delegated to the language model decoder.
-
----
-
-## Installation
+## Get Started
 
 To set up the development environment, follow these steps:
 
