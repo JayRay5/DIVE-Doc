@@ -20,8 +20,6 @@ In the DocVQA context, current end-to-end models either use lightweight architec
 
 ## Demo & Pretrained Models
 
-
-## Performance & Efficiency
 | Method                    | VE Latency (ms)| ANLS Score ↑ | Download |
 |--------------------------|--------------|----------------|-----|
 | **DIVE-Doc (FRD)**       | 446     | **82.67**  |   [🤗 Hugging Face](https://huggingface.co)  |
@@ -30,7 +28,7 @@ In the DocVQA context, current end-to-end models either use lightweight architec
 
 
 
-## Get Started
+## Intallation
 
 To set up the development environment, follow these steps:
 
@@ -50,20 +48,9 @@ To set up the development environment, follow these steps:
     ```
     *(Note: A `requirements.txt` file detailing all necessary libraries will be provided in the repository.)*
 
----
 
-## Usage
+## Training & Evaluation
 
-This section will guide you on how to use DIVE-Doc for inference and how to replicate our training and evaluation procedures.
-
-1.  **Download Pre-trained Models:**
-    *(Instructions on where to download model weights, likely from Hugging Face Hub, will be provided here.)*
-2.  **Inference:**
-    *(Example Python scripts or command-line commands for running inference on your own document images and questions will be provided here.)*
-3.  **Training & Evaluation:**
-    *(Detailed instructions on how to set up the training environment, prepare datasets, and run training/evaluation scripts will be provided here.)*
-
----
 
 ## Citation
 
