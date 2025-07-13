@@ -52,15 +52,15 @@ To set up the development environment, follow these steps:
 ```bash
 DIVE-Doc
 ├── data
-│   ├── docvqa
-|   |   ├── build_image_dataset.py #generate image from the docvqa dataset without dupplicated samples for the distillation stage.
-│   |   ├── build_image_embeddings.py #generate embeddings of the teacher paligemma for the distillation stage.
-│   |   └── utils.py       
-│   |          
-|   ├── doc-cls
-|   |        .
-|   |        .
-|   ├── dla
+│  ├── docvqa
+|  |   ├── build_image_dataset.py #generate image from the docvqa dataset without dupplicated samples for the distillation stage.
+│  |   ├── build_image_embeddings.py #generate embeddings of the teacher paligemma for the distillation stage.
+│  |   └── utils.py       
+│  |          
+|  ├── doc-cls
+|  |        .
+|  |        .
+|  ├── dla
 |      
 |            .
 |            .
