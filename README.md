@@ -102,7 +102,7 @@ cd dataset/docvqa
 python build_image_dataset.py #generate image png without duplicated samples
 python build_image_embeddings.py #generate paligemma image embeddings 
 ```
-2. Distillation stage
+2. **Distillation stage** <br>
 You can set which student configuration you want or set a new one in
 ```bash
 ./trainning/docvqa/config.py
@@ -110,11 +110,17 @@ You can set which student configuration you want or set a new one in
 
 ```bash
 cd training/docvqa
-python build_image_dataset.py #generate image png without duplicated samples
-python build_image_embeddings.py #generate paligemma image embeddings 
+python distillation_stage1.py #the script will create a new forlder in ./experiments which will contain the weights of this training stage
 ```
-3. Finetuning stage
-
+3. **Finetuning stage**
+```bash
+python finetuning_stage2.py #You have to put the path of the folder create by the distillation pipeline in this script
+```
+4. **Evaluation** <br>
+You can evaluate the distillation stage model or the final model with the following script my inserting the model path in the experiment folder.
+```bash
+python evaluation.py #You have to put the path of the folder create by the distillation pipeline in this script
+```
 ### Document Classification
 
 ### Document Layout Analysis 
