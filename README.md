@@ -98,9 +98,21 @@ DIVE-Doc
 ### DocVQA
 1. **Dataset**
 ```bash
-
+cd dataset/docvqa
+python build_image_dataset.py #generate image png without duplicated samples
+python build_image_embeddings.py #generate paligemma image embeddings 
 ```
 2. Distillation stage
+You can set which student configuration you want or set a new one in
+```bash
+./trainning/docvqa/config.py
+```
+
+```bash
+cd training/docvqa
+python build_image_dataset.py #generate image png without duplicated samples
+python build_image_embeddings.py #generate paligemma image embeddings 
+```
 3. Finetuning stage
 
 ### Document Classification
