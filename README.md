@@ -22,8 +22,7 @@ In the DocVQA context, current end-to-end models either use lightweight architec
 
 
 ## Performance & Efficiency
-|                            **Model Configuration**                                 | **Results (ANLS) ↑** |
-| Method                      || #Params (VE) | #Params Total | OCR        | General     | Figure     | Free-text  | Picture    | Layout     |
+| Method                      || #Params (VE) | #Params Total | OCR        | General  (ANLS) ↑   | Figure     | Free-text  | Picture    | Layout     |
 |-----------------------------|--------------|----------------|------------|-------------|------------|------------|------------|------------|                               |
 | **PaliGEMMA**               | 0.4(B)       | 3(B)           |            | 84.77       | 65.43      | 80.99      | 73.82      | 87.33      |
 | **UDOP**                    | -            | 0.8(B)         | ✓          | 84.70       | -          | -          | -          | -          |
