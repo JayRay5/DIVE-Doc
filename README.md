@@ -18,20 +18,15 @@
 
 In the DocVQA context, current end-to-end models either use lightweight architectures that run efficiently on small devices but have limited performance or rely on LVLMs that achieve high performance at significant computational cost. Thus, we present **DIVE-Doc**, an end-to-end model that bridges this gap by distilling a 400M-parameter SigLIP visual encoder into a small hierarchical Swin transformer, preserving LVLM performance with only one-fifth of the visual encoder's parameters. We investigate two distillation strategies: Fixed-Resolution Distillation (FRD), which matches teacher–student patch counts by forcing student input resolution, and Adaptive-Resolution Distillation (ARD), which aligns mismatched sequences via parameter-free interpolation, enabling various input resolutions. Fine-tuned with QLoRA, DIVE-Doc attains 82.7% ANLS, outperforming lightweight models and sitting within 2 ANLS of its teacher PaliGEMMA on DocVQA, while halving its visual encoder's latency and supporting higher input resolutions. Analysis on RVL-CDIP and DocLayNet shows that the visual encoder captures document-level structure but delegates fine-grained layout reasoning to the language model decoder.
 
-## Demo
+## Demo & Pretrained Models
 
 
 ## Performance & Efficiency
-| Method                    | #Params (VE) | #Params Total | OCR | General (ANLS) ↑ | Figure | Free-text | Picture | Layout |
-|--------------------------|--------------|----------------|-----|------------------|--------|------------|---------|--------|
-| **PaliGEMMA**            | 0.4(B)       | 3(B)           |     | 84.77            | 65.43  | 80.99      | 73.82   | 87.33  |
-| **UDOP**                 | -            | 0.8(B)         | ✓   | 84.70            | -      | -          | -       | -      |
-| **LayoutLMv3**           | -            | 0.133(B)       | ✓   | 78.76            | -      | -          | -       | -      |
-| **Donut**                | 0.075(B)     | 0.2(B)         |     | 66.26            | 39.60  | 46.43      | 29.69   | 69.87  |
-| **Dessurt**              |              | 0.127(B)       |     | 63.22            | 31.64  | 48.52      | 28.62   | 64.86  |
-| **DIVE-Doc (FRD)**       | 0.075(B)     | 2.58(B)        |     | **82.67**        | 59.33  | **78.83**  | 49.96   | 85.00  |
-| **DIVE-Doc (ARD/HRes)**  | 0.075(B)     | 2.58(B)        |     | 82.63            | **61.48** | 77.64   | **58.68** | **85.34** |
-| **DIVE-Doc (ARD/LRes)**  | 0.075(B)     | 2.58(B)        |     | 79.26            | 54.94  | 74.54      | 58.28   | 83.15  |
+| Method                    | Visual Encoder Latency per Image | ANLS Score ↑ | Download |
+|--------------------------|--------------|----------------|-----|
+| **DIVE-Doc (FRD)**       | 0.075(B)     | **82.67**  |     |
+| **DIVE-Doc (ARD/HRes)**  | 0.075(B)     | 82.63        |     |
+| **DIVE-Doc (ARD/LRes)**  | 0.075(B)     | 79.26       |     |
 
 
 
