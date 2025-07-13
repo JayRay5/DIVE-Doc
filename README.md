@@ -22,7 +22,7 @@ In the DocVQA context, current end-to-end models either use lightweight architec
 
 
 ## Performance & Efficiency
-| Method                    | Visual Encoder Latency per Image (ms)| ANLS Score ↑ | Download |
+| Method                    | VE Latency (ms)| ANLS Score ↑ | Download |
 |--------------------------|--------------|----------------|-----|
 | **DIVE-Doc (FRD)**       | 446     | **82.67**  |   [🤗 Hugging Face](https://huggingface.co)  |
 | **DIVE-Doc (ARD/HRes)**  | 520     | 82.63        |  [🤗 Hugging Face](https://huggingface.co)   |
