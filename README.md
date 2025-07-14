@@ -7,7 +7,7 @@ In the DocVQA context, current end-to-end models either use lightweight architec
 
 ## Demo & Trained Models
 
-![Alt text for video GIF](./demo_readme.gif)
+![Alt text for video GIF](./demo_readme2.gif)
 
 
 | Model                    | VE Latency (ms)| ANLS Score ↑ | Download |
