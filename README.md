@@ -41,9 +41,8 @@ To set up the development environment, follow these steps:
     ```bash
     pip install -r requirements.txt
     ```
-    *(Note: A `requirements.txt` file detailing all necessary libraries will be provided in the repository.)*
     
-## Repository Struture
+## Repository Structure
 ```bash
 DIVE-Doc
 ├── data
