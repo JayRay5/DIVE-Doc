@@ -1,24 +1,11 @@
 # DIVE-Doc: Downscaling foundational Image Visual Encoder into hierarchical architecture for DocVQA
-
-## Table of Contents
-- [Abstract](#abstract)
-- [Key Features](#key-features)
-- [Model Overview](#model-overview)
-- [Distillation Strategies](#distillation-strategies)
-- [Performance & Efficiency](#performance--efficiency)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Citation](#citation)
-- [License](#license)
-- [Contact](#contact)
-
----
+<center>Official implementation of DIVE-Doc|Paper|Poster|Slide <center>
 
 ## Description
 
 In the DocVQA context, current end-to-end models either use lightweight architectures that run efficiently on small devices but have limited performance or rely on LVLMs that achieve high performance at significant computational cost. Thus, we present **DIVE-Doc**, an end-to-end model that bridges this gap by distilling a 400M-parameter SigLIP visual encoder into a small hierarchical Swin transformer, preserving LVLM performance with only one-fifth of the visual encoder's parameters. We investigate two distillation strategies: Fixed-Resolution Distillation (FRD), which matches teacher–student patch counts by forcing student input resolution, and Adaptive-Resolution Distillation (ARD), which aligns mismatched sequences via parameter-free interpolation, enabling various input resolutions. Fine-tuned with QLoRA, DIVE-Doc attains 82.7% ANLS, outperforming lightweight models and sitting within 2 ANLS of its teacher PaliGEMMA on DocVQA, while halving its visual encoder's latency and supporting higher input resolutions. Analysis on RVL-CDIP and DocLayNet shows that the visual encoder captures document-level structure but delegates fine-grained layout reasoning to the language model decoder.
 
-## Demo & Pretrained Models
+## Demo & Trained Models
 
 | Model                    | VE Latency (ms)| ANLS Score ↑ | Download |
 |--------------------------|--------------|----------------|-----|
@@ -48,7 +35,7 @@ To set up the development environment, follow these steps:
     ```
     *(Note: A `requirements.txt` file detailing all necessary libraries will be provided in the repository.)*
     
-## Repository Description
+## Repository Struture
 ```bash
 DIVE-Doc
 ├── data
@@ -100,24 +87,25 @@ DIVE-Doc
 ```bash
 cd dataset/docvqa
 python build_image_dataset.py #generate image png without duplicated samples
-python build_image_embeddings.py #generate paligemma image embeddings 
+python build_image_embeddings.py #generate Paligemma image embeddings 
 ```
 2. **Distillation stage** <br>
-You can set which student configuration you want or set a new one in
+You can set the student configuration you want or a new one in
 ```bash
 ./trainning/docvqa/config.py
 ```
 Then, start the distillation script: 
 ```bash
 cd training/docvqa
-python distillation_stage1.py #the script will create a new forlder in ./experiments which will contain the weights of this training stage
+python distillation_stage1.py #the script will create a new folder in ./experiments, which will contain the weights of this training stage
 ```
 3. **Finetuning stage**
+Once you have a distilled model, you can finetune with QLORA using the following script:
 ```bash
-python finetuning_stage2.py #You have to put the path of the folder create by the distillation pipeline in this script
+python finetuning_stage2.py #You have to put the path of the folder created by the distillation pipeline in this script
 ```
 4. **Evaluation** <br>
-You can evaluate the distillation stage model or the final model with the following script my inserting the model path in the experiment folder.
+You can evaluate the distillation stage model or the final model with the following script by inserting the model path in the experiment folder.
 ```bash
 python evaluation.py
 ```
