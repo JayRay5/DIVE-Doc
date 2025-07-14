@@ -117,6 +117,8 @@ You can evaluate the distillation stage model or the final model with the follow
 ```bash
 python evaluation.py
 ```
+This will generate a result.json file containing the predicted answers for the test set. <br>
+To asses the performance, please, upload the mentionned file on the [Robust Competition Reading website](https://rrc.cvc.uab.es/?ch=17&com=evaluation&task=1).
 ### Document Classification
 
 ### Document Layout Analysis 
