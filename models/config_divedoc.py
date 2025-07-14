@@ -6,7 +6,7 @@ sys.path.append(str(parent_root))
 
 
 
-from transformers import PretrainedConfig, DonutSwinConfig, GemmaConfig, CONFIG_MAPPING, PaliGemmaConfig, SiglipVisionConfig
+from transformers import PretrainedConfig, DonutSwinConfig, GemmaConfig, CONFIG_MAPPING, SiglipVisionConfig
 from typing import Tuple, Literal
 
 

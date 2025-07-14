@@ -25,10 +25,10 @@ from torch.utils.data import DataLoader
 import pytorch_lightning as pl
 
 #utils
-from training.config import config
-from data.utils import ImageDataset
+from config import config
+from data.docvqa.utils import ImageDataset
 from models.lightning_modules import Distillation
-from models.config_swinpamgemma import get_model_config,get_vision_config
+from models.config_divedoc import get_model_config,get_vision_config
 from models.model import DIVEdoc, SiglipPAMVisionEncoder, SwinPamVisionEncoder
 
 #os.environ["CUDA_VISIBLE_DEVICES"] = 2
