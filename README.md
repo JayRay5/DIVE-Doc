@@ -3,7 +3,7 @@
 
 ## Description
 
-**DIVE-Doc** is an end-to-end model trade-of between LVLMs and lightweight architectures in the context of DocVQA. It is built by distilling the SigLIP-400m visual encoder of PaliGEMMA into a small hierarchical Swin transformer, while reusing the original GEMMA decoder, preserving the LVLM performance with only one-fifth of the visual encoder's parameters. We investigate two distillation strategies: Fixed-Resolution Distillation (FRD), which matches teacher–student patch counts by forcing student input resolution, and Adaptive-Resolution Distillation (ARD), which aligns mismatched sequences via parameter-free interpolation, enabling various input resolutions. Fine-tuned with QLoRA, DIVE-Doc attains 82.7% ANLS, outperforming lightweight models and sitting within 2 ANLS of its teacher PaliGEMMA on DocVQA, while halving its visual encoder's latency and supporting higher input resolutions. We also conducted analysis on RVL-CDIP and DocLayNet shows that the visual encoder captures document-level structure but delegates fine-grained layout reasoning to the language model decoder.
+**DIVE-Doc** is an end-to-end trade-of between LVLMs and lightweight architectures in the context of DocVQA. It is built by distilling the SigLIP-400m visual encoder of PaliGEMMA into a small hierarchical Swin transformer, while reusing the original GEMMA decoder, preserving the LVLM performance with only one-fifth of the visual encoder's parameters. 
 
 ## Demo & Trained Models
 
