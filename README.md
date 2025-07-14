@@ -118,7 +118,7 @@ You can evaluate the distillation stage model or the final model with the follow
 python evaluation.py
 ```
 This script will generate a results.json file containing the predicted answers for the test set, which will be saved in the corresponding model folder in ./experiment. <br>
-To assess the performance, please upload the mentioned file on the [Robust Competition Reading website](https://rrc.cvc.uab.es/?ch=17&com=evaluation&task=1).
+To assess the performance, please upload the mentioned file on the [Robust Reading Competition website](https://rrc.cvc.uab.es/?ch=17&com=evaluation&task=1).
 ### Document Classification
 
 ### Document Layout Analysis 
