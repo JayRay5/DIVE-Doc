@@ -9,6 +9,11 @@ In the DocVQA context, current end-to-end models either use lightweight architec
 
 ![Alt text for video GIF](./demo_readme.gif)
 
+You can use the model on a gradio web-interface by running:
+```bash
+python app.py
+```
+The trained models presented in the paper can be download on hugging face.
 
 | Model                    | VE Latency (ms)| ANLS Score ↑ | Download |
 |--------------------------|--------------|----------------|-----|
