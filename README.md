@@ -7,6 +7,9 @@ In the DocVQA context, current end-to-end models either use lightweight architec
 
 ## Demo & Trained Models
 
+![Alt text for video GIF](./demo_readme.gif)
+
+
 | Model                    | VE Latency (ms)| ANLS Score ↑ | Download |
 |--------------------------|--------------|----------------|-----|
 | **DIVE-Doc (FRD)**       | 446     | **82.67**  |   [🤗 Hugging Face](https://huggingface.co)  |
