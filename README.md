@@ -108,7 +108,8 @@ Then, start the distillation script:
 cd training/docvqa
 python distillation_stage1.py 
 ```
-This script will create a "model_m" folder inside the "./experiments" folder with m=0 if this is the first model training, where weights and config files will be saved.
+This script will create a "model_{m}" folder inside the "./experiments" folder with m=0 if this is the first model training.
+Then it will also create a ".experiments/model_{m}/distillation_stage1" folder where weights and config files will be saved.
 
 3. **Finetuning stage**
 Once you have a distilled model, you can finetune with QLORA using the following script:
@@ -136,15 +137,14 @@ Then start the training of the segmentation decoder head:
 cd training/dla
 python train.py
 ```
-This will generate a new folder "dla" in the model folder for DLA experiments. <br> 
+This will generate a new folder "./experiments/model_{m}/dla" in the model folder for DLA experiments. <br> 
 Moreover, the current experiment model will be saved in a subfolder inside the "dla" one, named "experiment_e" with e=0 if this is the first dla experiment for this model.<br>
 Then you can evaluate the model on the test with the following script
 ```bash
 python test.py
 ```
-It will save the score as a json file in the "experiments/model_/dla/experiments/experiment_n" folder.
+It will save the score as a json file in the "./experiments/model_{m}/dla/experiments/experiment_{e}" folder.
 ## Citation
-
 If you find DIVE-Doc useful for your research, please consider citing our paper:
 
 ```bibtex
