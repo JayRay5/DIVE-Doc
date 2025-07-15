@@ -9,11 +9,11 @@
 
 ![Alt text for video GIF](./demo_readme.gif)
 
-You can use the model on a gradio web-interface by running:
+You can use the model on a gradio web interface by running:
 ```bash
 python app.py
 ```
-The trained models presented in the paper can be download on hugging face.
+The trained models presented in the paper can be downloaded on HuggingFace.
 
 | Model                    | VE Latency (ms)| ANLS Score ↑ | Download |
 |--------------------------|--------------|----------------|-----|
@@ -34,59 +34,60 @@ To set up the development environment, follow these steps:
     ```
 2.  **Create a conda environment (recommended):**
     ```bash
-    conda create -n dive-doc python=3.9
-    conda activate dive-doc
+    conda create -n dive-doc-env python=3.11.5
+    conda activate dive-doc-env
     ```
 3.  **Install dependencies:**
     ```bash
     pip install -r requirements.txt
     ```
-    *(Note: A `requirements.txt` file detailing all necessary libraries will be provided in the repository.)*
     
-## Repository Struture
+## Repository Structure
 ```bash
 DIVE-Doc
 ├── data
-│   ├── docvqa
-|   |   ├── build_image_dataset.py #generate image from the docvqa dataset without dupplicated samples for the distillation stage.
-│   |   ├── build_image_embeddings.py #generate embeddings of the teacher paligemma for the distillation stage.
-│   |   └── utils.py       
-│   |          
-|   ├── doc-cls
-|   |        .
-|   |        .
 |   ├── dla
-|      
-|            .
-|            .
+|   |    └── utils.py
+|   |
+|   ├── doc-cls
+|   |
+│   └── docvqa
+|       ├── build_image_dataset.py #generate images from the docvqa dataset without duplicated samples for the distillation stage.
+│       ├── build_image_embeddings.py #generate embeddings of the teacher PaliGEMMA for the distillation stage.
+│       └── utils.py             
 |
 |
-├── experiments #contains saved models and results of the runned experiments
+├── experiments #contains saved models and results of the experiments.
 |            .
 |            .
 |
 ├── models 
-│   ├── config_divedoc.py #contains config classes for huggingface models.
+│   ├── config_divedoc.py #contains config classes for HuggingFace docvqa models.
+|   ├── dla_config.py #contains config classes for Huggingface DLA models.
+|   ├── dla_model.py #contains Huggingface DLA models.
 │   ├── lightning_modules.py #contains lightning torch classes for the distillation stage.
-│   ├── model.py #contains huggingface models.
-|   ├── visual_encoders.py #contains torch visual encoder models.
-│             .
-│             .
+│   ├── model.py #contains Huggingface DocVQA models.
+|   └── visual_encoders.py #contains torch visual encoder models.
+│   
+│     
 └── training
-|   ├── docvqa #contrains script for training and evaluation of model.
-|   |    ├── config.py #use to set the VE architecture of the student & hyperparameters for the distillation stage.
-|   |    ├── distillation_stage1.py #pipeline training for the distillation stage.
-|   |    ├── evaluation.py #generate answer for the docvqa test set.
-|   |    └── finetuning_stage2.py #pipeline training for the end-to-end finetuning stage.
+|   ├── dla # contains script for training and evaluation of models.
+|   |    ├── config.py #Use to set the architecture and choose the VE.
+|   |    ├── test.py #Generate segmentation performance on the test set for the chosen model.
+|   |    ├── train.py #Training pipeline for a DIVE-Doc model trained until finetuning_stage2 or for Donut & PaliGEMMA VE.
+|   |    └── utils.py 
 |   |
 |   ├── doc-cls
 |   |
-|   |
-|   |
-|   ├── dla
+|   └── docvqa #contains script for training and evaluation of models.
+|        ├── config.py #use to set the VE architecture of the student & hyperparameters for the distillation stage.
+|        ├── distillation_stage1.py #pipeline training for the distillation stage.
+|        ├── evaluation.py #generate answer for the DocVQA test set.
+|        └── finetuning_stage2.py #pipeline training for the end-to-end finetuning stage.
+|        
 |
-├── app.py #pipeline to use the model in inference with a web gradio interface
-└── token.json #add inside a hugging face token to be able to access to the teacher model from huggingface
+├── app.py #pipeline to use the model in inference with a web gradio interface.
+└── token.json #add inside a HuggingFace token to be able to access to the teacher model from HuggingFace.
 ```
 ## Training & Evaluation
 
@@ -100,18 +101,22 @@ python build_image_embeddings.py #generate Paligemma image embeddings
 2. **Distillation stage** <br>
 You can set the student configuration you want or a new one in
 ```bash
-./trainning/docvqa/config.py
+./training/docvqa/config.py
 ```
 Then, start the distillation script: 
 ```bash
 cd training/docvqa
-python distillation_stage1.py #the script will create a new folder in ./experiments, which will contain the weights of this training stage
+python distillation_stage1.py 
 ```
+This script will create a "model_{m}" folder inside the "./experiments" folder with m=0 if this is the first model training.
+Then it will also create a ".experiments/model_{m}/distillation_stage1" folder where weights and config files will be saved.
+
 3. **Finetuning stage**
 Once you have a distilled model, you can finetune with QLORA using the following script:
 ```bash
-python finetuning_stage2.py #You have to put the path of the folder created by the distillation pipeline in this script
+python finetuning_stage2.py #You have to put the path of the "./experiments/model_m" folder created by the distillation pipeline in this script
 ```
+The weights will be saved in a "finetuning_stage2" folder inside "./experiments/model_m".
 4. **Evaluation** <br>
 You can evaluate the distillation stage model or the final model with the following script by inserting the model path in the experiment folder.
 ```bash
@@ -122,9 +127,24 @@ To assess the performance, please upload the mentioned file on the [Robust Readi
 ### Document Classification
 
 ### Document Layout Analysis 
-
+Once you have finetuned your DIVE-Doc model until stage 2, you can evaluate the visual encoder capacity on the Document Layout Analysis (DLA) task.<br>
+For that, you have to put the model directory path in the following script
+```bash
+./training/dla/config.py
+```
+Then start the training of the segmentation decoder head:
+```bash
+cd training/dla
+python train.py
+```
+This will generate a new folder "./experiments/model_{m}/dla" in the model folder for DLA experiments. <br> 
+Moreover, the current experiment model will be saved in a subfolder inside the "dla" one, named "experiment_{e}" with e=0 if this is the first dla experiment for this model.<br>
+Then you can evaluate the model on the test with the following script
+```bash
+python test.py
+```
+It will save the score as a json file in the "./experiments/model_{m}/dla/experiments/experiment_{e}" folder.
 ## Citation
-
 If you find DIVE-Doc useful for your research, please consider citing our paper:
 
 ```bibtex
