@@ -50,6 +50,7 @@ DIVE-Doc
 |   |    └── utils.py
 |   |
 |   ├── doc-cls
+|   |    └── utils.py
 |   |
 │   └── docvqa
 |       ├── build_image_dataset.py #generate images from the docvqa dataset without duplicated samples for the distillation stage.
@@ -109,7 +110,7 @@ cd training/docvqa
 python distillation_stage1.py 
 ```
 This script will create a "model_{m}" folder inside the "./experiments" folder with m=0 if this is the first model training.
-Then it will also create a ".experiments/model_{m}/distillation_stage1" folder where weights and config files will be saved.
+Then, it will also create a ".experiments/model_{m}/distillation_stage1" folder where weights and config files will be saved.
 
 3. **Finetuning stage**
 Once you have a distilled model, you can finetune with QLORA using the following script:
@@ -123,10 +124,25 @@ You can evaluate the distillation stage model or the final model with the follow
 ```bash
 python evaluation.py
 ```
-This script will generate a results.json file containing the predicted answers for the test set, which will be saved in the corresponding model folder in ./experiment. <br>
+This script generates a results.json file containing the predicted answers for the test set, which is saved in the corresponding model folder in "./experiment". <br>
 To assess the performance, please upload the mentioned file on the [Robust Reading Competition website](https://rrc.cvc.uab.es/?ch=17&com=evaluation&task=1).
 ### Document Classification
-
+Once you have finetuned your DIVE-Doc model until stage 2, you can evaluate the visual encoder capacity on the Document Classification (Doc-CLS) task.<br>
+For that, you have to put the model directory path in the following script
+```bash
+./training/doc_cls/config.py
+```
+Then start the training of the segmentation decoder head:
+```bash
+cd training/doc_cls
+python train.py
+```
+This will generate a new folder "cls" as "./experiments/model_{m}/cls" for Doc-CLS experiments. <br> 
+Then you can evaluate the model on the test with the following script
+```bash
+python test.py
+```
+It will save the score as a JSON file in the "./experiments/model_{m}/cls/" folder.
 ### Document Layout Analysis 
 Once you have finetuned your DIVE-Doc model until stage 2, you can evaluate the visual encoder capacity on the Document Layout Analysis (DLA) task.<br>
 For that, you have to put the model directory path in the following script
@@ -138,12 +154,12 @@ Then start the training of the segmentation decoder head:
 cd training/dla
 python train.py
 ```
-This will generate a new folder "./experiments/model_{m}/dla" in the model folder for DLA experiments. <br> 
+This will generate a new folder "dla" as "./experiments/model_{m}/dla" for DLA experiments. <br> 
 Then you can evaluate the model on the test with the following script
 ```bash
 python test.py
 ```
-It will save the score as a json file in the "./experiments/model_{m}/dla/" folder.
+It will save the score as a JSON file in the "./experiments/model_{m}/dla/" folder.
 ## Citation
 If you find DIVE-Doc useful for your research, please consider citing our paper:
 
