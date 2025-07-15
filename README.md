@@ -9,11 +9,11 @@
 
 ![Alt text for video GIF](./demo_readme.gif)
 
-You can use the model on a gradio web-interface by running:
+You can use the model on a gradio web interface by running:
 ```bash
 python app.py
 ```
-The trained models presented in the paper can be download on hugging face.
+The trained models presented in the paper can be downloaded on HuggingFace.
 
 | Model                    | VE Latency (ms)| ANLS Score ↑ | Download |
 |--------------------------|--------------|----------------|-----|
@@ -53,7 +53,7 @@ DIVE-Doc
 |   |
 │   └── docvqa
 |       ├── build_image_dataset.py #generate images from the docvqa dataset without duplicated samples for the distillation stage.
-│       ├── build_image_embeddings.py #generate embeddings of the teacher paligemma for the distillation stage.
+│       ├── build_image_embeddings.py #generate embeddings of the teacher PaliGEMMA for the distillation stage.
 │       └── utils.py             
 |
 |
@@ -62,11 +62,11 @@ DIVE-Doc
 |            .
 |
 ├── models 
-│   ├── config_divedoc.py #contains config classes for huggingface docvqa models.
-|   ├── dla_config.py #contains config classes for huggingface dla models.
-|   ├── dla_model.py #contains huggingface dla models.
+│   ├── config_divedoc.py #contains config classes for HuggingFace docvqa models.
+|   ├── dla_config.py #contains config classes for Huggingface DLA models.
+|   ├── dla_model.py #contains Huggingface DLA models.
 │   ├── lightning_modules.py #contains lightning torch classes for the distillation stage.
-│   ├── model.py #contains huggingface docvqa models.
+│   ├── model.py #contains Huggingface DocVQA models.
 |   └── visual_encoders.py #contains torch visual encoder models.
 │   
 │     
@@ -79,7 +79,7 @@ DIVE-Doc
 |   |
 |   ├── doc-cls
 |   |
-|   └── docvqa # contains script for training and evaluation of models.
+|   └── docvqa #contains script for training and evaluation of models.
 |        ├── config.py #use to set the VE architecture of the student & hyperparameters for the distillation stage.
 |        ├── distillation_stage1.py #pipeline training for the distillation stage.
 |        ├── evaluation.py #generate answer for the DocVQA test set.
