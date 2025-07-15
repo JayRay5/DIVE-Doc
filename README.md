@@ -138,7 +138,7 @@ cd training/dla
 python train.py
 ```
 This will generate a new folder "./experiments/model_{m}/dla" in the model folder for DLA experiments. <br> 
-Moreover, the current experiment model will be saved in a subfolder inside the "dla" one, named "experiment_e" with e=0 if this is the first dla experiment for this model.<br>
+Moreover, the current experiment model will be saved in a subfolder inside the "dla" one, named "experiment_{e}" with e=0 if this is the first dla experiment for this model.<br>
 Then you can evaluate the model on the test with the following script
 ```bash
 python test.py
