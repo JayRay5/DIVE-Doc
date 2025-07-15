@@ -117,6 +117,7 @@ Once you have a distilled model, you can finetune with QLORA using the following
 python finetuning_stage2.py #You have to put the path of the "./experiments/model_m" folder created by the distillation pipeline in this script
 ```
 The weights will be saved in a "finetuning_stage2" folder inside "./experiments/model_{m}/".
+
 4. **Evaluation** <br>
 You can evaluate the distillation stage model or the final model with the following script by inserting the model path in the experiment folder.
 ```bash
