@@ -34,8 +34,8 @@ To set up the development environment, follow these steps:
     ```
 2.  **Create a conda environment (recommended):**
     ```bash
-    conda create -n dive-doc python=3.9
-    conda activate dive-doc
+    conda create -n dive-doc-env python=3.11.5
+    conda activate dive-doc-env
     ```
 3.  **Install dependencies:**
     ```bash
