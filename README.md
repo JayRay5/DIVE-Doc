@@ -46,46 +46,48 @@ To set up the development environment, follow these steps:
 ```bash
 DIVE-Doc
 ├── data
-│   ├── docvqa
-|   |   ├── build_image_dataset.py #generate image from the docvqa dataset without dupplicated samples for the distillation stage.
-│   |   ├── build_image_embeddings.py #generate embeddings of the teacher paligemma for the distillation stage.
-│   |   └── utils.py       
-│   |          
-|   ├── doc-cls
-|   |        .
-|   |        .
 |   ├── dla
-|      
-|            .
-|            .
+|   |    └── utils.py
+|   |
+|   ├── doc-cls
+|   |
+│   └── docvqa
+|       ├── build_image_dataset.py #generate images from the docvqa dataset without duplicated samples for the distillation stage.
+│       ├── build_image_embeddings.py #generate embeddings of the teacher paligemma for the distillation stage.
+│       └── utils.py             
 |
 |
-├── experiments #contains saved models and results of the runned experiments
+├── experiments #contains saved models and results of the experiments.
 |            .
 |            .
 |
 ├── models 
-│   ├── config_divedoc.py #contains config classes for huggingface models.
+│   ├── config_divedoc.py #contains config classes for huggingface docvqa models.
+|   ├── dla_config.py #contains config classes for huggingface dla models.
+|   ├── dla_model.py #contains huggingface dla models.
 │   ├── lightning_modules.py #contains lightning torch classes for the distillation stage.
-│   ├── model.py #contains huggingface models.
-|   ├── visual_encoders.py #contains torch visual encoder models.
-│             .
-│             .
+│   ├── model.py #contains huggingface docvqa models.
+|   └── visual_encoders.py #contains torch visual encoder models.
+│   
+│     
 └── training
-|   ├── docvqa #contrains script for training and evaluation of model.
+|   ├── dla # contains script for training and evaluation of models.
 |   |    ├── config.py #use to set the VE architecture of the student & hyperparameters for the distillation stage.
-|   |    ├── distillation_stage1.py #pipeline training for the distillation stage.
-|   |    ├── evaluation.py #generate answer for the docvqa test set.
-|   |    └── finetuning_stage2.py #pipeline training for the end-to-end finetuning stage.
+|   |    ├── test.py #Generate segmentation performance on the test set for the chosen model.
+|   |    ├── train.py #Training pipeline for a DIVE-Doc model trained until finetuning_stage2 or for Donut & PaliGEMMA VE.
+|   |    └── utils.py 
 |   |
 |   ├── doc-cls
 |   |
-|   |
-|   |
-|   ├── dla
+|   └── docvqa # contains script for training and evaluation of models.
+|        ├── config.py #use to set the VE architecture of the student & hyperparameters for the distillation stage.
+|        ├── distillation_stage1.py #pipeline training for the distillation stage.
+|        ├── evaluation.py #generate answer for the DocVQA test set.
+|        └── finetuning_stage2.py #pipeline training for the end-to-end finetuning stage.
+|        
 |
-├── app.py #pipeline to use the model in inference with a web gradio interface
-└── token.json #add inside a hugging face token to be able to access to the teacher model from huggingface
+├── app.py #pipeline to use the model in inference with a web gradio interface.
+└── token.json #add inside a HuggingFace token to be able to access to the teacher model from HuggingFace.
 ```
 ## Training & Evaluation
 
