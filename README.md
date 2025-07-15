@@ -116,7 +116,7 @@ Once you have a distilled model, you can finetune with QLORA using the following
 ```bash
 python finetuning_stage2.py #You have to put the path of the "./experiments/model_m" folder created by the distillation pipeline in this script
 ```
-The weights will be saved in a "finetuning_stage2" folder inside "./experiments/model_m".
+The weights will be saved in a "finetuning_stage2" folder inside "./experiments/model_{m}/".
 4. **Evaluation** <br>
 You can evaluate the distillation stage model or the final model with the following script by inserting the model path in the experiment folder.
 ```bash
@@ -138,12 +138,11 @@ cd training/dla
 python train.py
 ```
 This will generate a new folder "./experiments/model_{m}/dla" in the model folder for DLA experiments. <br> 
-Moreover, the current experiment model will be saved in a subfolder inside the "dla" one, named "experiment_{e}" with e=0 if this is the first dla experiment for this model.<br>
 Then you can evaluate the model on the test with the following script
 ```bash
 python test.py
 ```
-It will save the score as a json file in the "./experiments/model_{m}/dla/experiments/experiment_{e}" folder.
+It will save the score as a json file in the "./experiments/model_{m}/dla/" folder.
 ## Citation
 If you find DIVE-Doc useful for your research, please consider citing our paper:
 
