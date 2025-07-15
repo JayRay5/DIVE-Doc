@@ -20,11 +20,10 @@ from data.dla.utils import DocLayNetSegmentationDataset
 from models.dla_model import SegmentationModel
 from utils import compute_metrics,id2label
 
-#model number in experiments folder
-n = 0
-#experiment folder in the dla folder
-d = 0
-path = f"../../experiments/model_{n}/dla/experiment_{d}"
+n = 0 #model number in experiments folder for DIVE-Doc model type
+path = f"../../experiments/model_{n}/dla"
+#path = f"../../experiments/siglip_paligemma/dla"  #for paligemma ve evaluation
+#path = f"../../experiments/swin_donut/dla"  #for donut ve evaluation
 
 with open("../../token.json", "r") as f:
         hf_token = json.load(f)["HF_token"]

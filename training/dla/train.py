@@ -21,28 +21,34 @@ from config import base_model_path, model,config
 with open("../../token.json", "r") as f:
         hf_token = json.load(f)["HF_token"]
 
-
 """
         Set Files
 """
+
+#to train a model with donut or paligemma ve
 if model[0]!="swin_qlora":
-    experiments_path = "./Experiments"
-    new_experiment_path = f'{experiments_path}/experiment_{len(os.listdir(experiments_path))}'
-    os.mkdir(new_experiment_path)
+    experiments_path = "../../experiments"
+    base_model_path = f"{experiments_path}/{model[0]}"
+    if model[0] not in os.listdir(experiments_path):
+        os.mkdir(base_model_path)
 
-    model_path = f'{new_experiment_path}/model'
+    experiment_path = f"{base_model_path}/dla"
+    if "dla" not in base_model_path:
+        os.mkdir(experiment_path)
+    
+    model_path = f"{experiment_path}/model"
     os.mkdir(model_path)
+
+#to train a model DIVE-Doc ve
 else:
-    experiments_path = f'{base_model_path}/dla'
-    if 'dla' not in os.listdir(base_model_path):
-        os.mkdir(experiments_path)
-    new_experiment_path = f'{experiments_path}/experiment_{len(os.listdir(experiments_path))}'
-    os.mkdir(new_experiment_path)
+    experiment_path = f"{base_model_path}/dla"
+    if "dla" not in os.listdir(base_model_path):
+        os.mkdir(experiment_path)
 
-    model_path = f'{new_experiment_path}/model'
+    model_path = f"{experiment_path}/model"
     os.mkdir(model_path)
 
-with open(f"{new_experiment_path}/config.json", "w") as f:
+with open(f"{experiment_path}/config.json", "w") as f:
     json.dump(config, f, indent=4)  
 
 
@@ -52,7 +58,7 @@ with open(f"{new_experiment_path}/config.json", "w") as f:
 
 if config["encoder_type"] =="swin_qlora":
     #SwinPAM ft qlora
-    with open(f'{base_model_path}/config.json','r') as f:
+    with open(f"{base_model_path}/distillation_stage1/config.json","r") as f:
         swin_qlora_config = json.load(f)
     processor = DonutProcessor.from_pretrained("naver-clova-ix/donut-base-finetuned-docvqa",token=hf_token)
     processor.image_processor.size["height"],processor.image_processor.size["width"] = swin_qlora_config["student_image_size"][0],swin_qlora_config["student_image_size"][1]
