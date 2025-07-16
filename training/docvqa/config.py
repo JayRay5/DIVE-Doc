@@ -1,24 +1,16 @@
 #[name,(output_resolution,embedding_dim),image_resolution]
 STUDENT = [
-            ["swinpam", ((80,60),1024),(2560,1920)],
-            ["swinpam", ((64,64),1024),(2048,2048)],
-            ["swinpam", ((90,90),1024),(2880,2880)], #((100,100),1024),(3200,3200)
-            ["swinpam", ((120,120),1024),(3840,3840)],
-            ["swinpam", ((48,48),1024),(1536,1536)],#((32,32),1024),(1024,1024)
-            ["swinpam", ((80,80),1024),(2560,2560)],
-            ["siglip80m", ((64,64),768),(896,896)],
-            ["siglip80m", ((80,80),768),(1120,1120)],
-            ["siglip80m", ((48,48),768),(672,672)]
+            ["swinpam", ((80,60),1024),(2560,1920)],# ARD/HRes
+            ["swinpam", ((64,64),1024),(2048,2048)],# FRD
+            ["swinpam", ((48,48),1024),(1536,1536)],# ARD/LRes
+            ["siglip80m", ((64,64),768),(896,896)]# SigLIP for PaliGEMMA_T
         ]
 
-student_index = 6
+student_index = 0
 
 patch_alignement_type = ["linear_projection","bilinear","bicubic","nearest-exact"]
 
 patch_alignement_type_index = 1
-
-window_sizes = [6,10,14]
-window_size = window_sizes[2]
 
 devices = [0,1]
 
@@ -38,7 +30,6 @@ config = {"max_epochs":20,
           "lr":3e-4, #8e-4
           "accumulate_grad_batches":16,
           "patch_alignement_type":patch_alignement_type[patch_alignement_type_index] if STUDENT[student_index][1][0]!=(64,64) else None,
-          "window_size": window_size if STUDENT[student_index][0] == "swinpam" else None,
           "train_batch_sizes": [1],
           "val_batch_sizes": [1],
           "verbose": True,

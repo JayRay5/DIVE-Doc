@@ -189,7 +189,7 @@ def get_siglip_vision_config(image_size=[896,896],num_image_token = 4096,hidden_
                                     )
     return encoder_config
 
-def get_swin_vision_config(image_size=[2560,1920],hidden_size = 1024, window_size = 10):
+def get_swin_vision_config(image_size=[2560,1920],hidden_size = 1024):
     encoder_config = DonutSwinConfig(
         attention_probs_dropout_prob= 0.0,
         depths =[
@@ -220,7 +220,7 @@ def get_swin_vision_config(image_size=[2560,1920],hidden_size = 1024, window_siz
         path_norm = True,
         qkv_bias = True,
         use_absolute_embeddings = False,
-        window_size = window_size
+        window_size = 10
         )
     return encoder_config
 
@@ -230,8 +230,7 @@ def get_vision_config(  visual_encoder_type:Literal["swinpam","siglip80m"],
                         student_fmap_dim=(80,60),
                         student_embedding_dim= 1024,
                         teacher_fmap_dim= (64,64),
-                        teacher_embedding_dim= 1152,
-                        window_size = 10):
+                        teacher_embedding_dim= 1152):
     pam_config = PamConfig(
                     sequence_mapping_layer_type = sequence_mapping_layer_type,
                     student_fmap_dim = student_fmap_dim,
@@ -240,7 +239,7 @@ def get_vision_config(  visual_encoder_type:Literal["swinpam","siglip80m"],
                     teacher_embedding_dim = teacher_embedding_dim)
     
     if visual_encoder_type == "swinpam":
-        encoder_config = get_swin_vision_config(image_size=image_size,hidden_size = student_embedding_dim, window_size = window_size)
+        encoder_config = get_swin_vision_config(image_size=image_size,hidden_size = student_embedding_dim)
         ve_config = SwinPamVisionEncoderConfig(encoder_config=encoder_config,pam_config=pam_config)
         return ve_config
     

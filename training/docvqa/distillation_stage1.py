@@ -113,8 +113,7 @@ def main():
                 student_fmap_dim=config["student_features_dim"][0],
                 student_embedding_dim= config["student_features_dim"][1],
                 teacher_fmap_dim= config["teacher_features_dim"][0],
-                teacher_embedding_dim= config["teacher_features_dim"][1],
-                window_size = None)
+                teacher_embedding_dim= config["teacher_features_dim"][1])
     
     if config["student_name"] == "swinpam":
         vision_encoder = SwinPamVisionEncoder(ve_config).model
