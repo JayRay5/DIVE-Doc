@@ -1,5 +1,10 @@
 import json
 import os
+import sys
+from pathlib import Path
+parent_root = Path().resolve().parent.parent.parent 
+
+sys.path.append(str(parent_root))
 
 os.environ['HF_HOME'] = "../../.cache"
 os.environ['HF_HUB_CACHE'] = "../../.cache"
