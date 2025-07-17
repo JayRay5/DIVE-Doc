@@ -14,7 +14,7 @@ from transformers.modeling_outputs import SemanticSegmenterOutput
 from typing import Optional, Tuple, Union
 
 from dla_config import SegmentationConfig
-from .model import SwinPamVisionEncoder, DIVEdoc
+from model import SwinPamVisionEncoder, DIVEdoc
 
 
 #Si mauvaise performance, ajouter un MLP comme dans segformer

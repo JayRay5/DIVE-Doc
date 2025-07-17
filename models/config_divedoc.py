@@ -107,7 +107,7 @@ class SiglipPAMVisionEncoderConfig(PretrainedConfig):
 
 class DIVEdocConfig(PretrainedConfig):
     keys_to_ignore_at_inference = ["past_key_values"]
-    sub_configs = {"vision_config": [SwinPamVisionEncoderConfig,SiglipPAMVisionEncoderConfig], "text_config": GemmaConfig}
+    sub_configs = {"vision_config": SwinPamVisionEncoderConfig, "text_config": GemmaConfig}
     model_type = "DIVEdoc"
     def __init__(
         self,
@@ -136,15 +136,13 @@ class DIVEdocConfig(PretrainedConfig):
                 vision_config["model_type"] if "model_type" in vision_config else "swinpam"
             )
             if vision_config["model_type"] == "swinpam":
-                print(vision_config["model_type"])
                 self.vision_config = SwinPamVisionEncoderConfig(encoder_config=vision_config["encoder_config"],pam_config=vision_config["pam_config"])
             elif vision_config["model_type"] == "siglippam":
-                print(vision_config["model_type"])
                 self.vision_config = SiglipPAMVisionEncoderConfig(encoder_config=vision_config["encoder_config"],pam_config=vision_config["pam_config"])
             else:
                 self.vision_config = CONFIG_MAPPING[vision_config["model_type"]](**vision_config)
         elif vision_config is None:
-            raise ValueError("Need a vision_config arg to create an instance of this class.")
+            self.vision_config = get_vision_config("swinpam")
 
         self.text_config = text_config
         if isinstance(self.text_config, dict):
@@ -164,7 +162,6 @@ class DIVEdocConfig(PretrainedConfig):
         self.text_config.num_image_tokens = self.vision_config.pam_config.teacher_fmap_dim[0] *\
                                             self.vision_config.pam_config.teacher_fmap_dim[1]
         self.vision_config.projection_dim = projection_dim
-        
         super().__init__(**kwargs)
 
     def to_dict(self):
@@ -280,7 +277,6 @@ def get_model_config(   visual_encoder_type: Literal["swinpam","siglip80m"],
                                                 teacher_fmap_dim = teacher_fmap_dim,
                                                 teacher_embedding_dim = teacher_embedding_dim)
    
-    
     decoder_config = get_original_decoder_config()
 
     DIVEdoc_config = DIVEdocConfig(
