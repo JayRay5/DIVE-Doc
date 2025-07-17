@@ -29,7 +29,7 @@ To set up the development environment, follow these steps:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/JayRay5/DIVE-Doc](https://github.com/JayRay5/DIVE-Doc)
+    git clone https://github.com/JayRay5/DIVE-Doc
     cd DIVE-Doc
     ```
 2.  **Create a conda environment (recommended):**
