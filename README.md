@@ -32,7 +32,7 @@ To set up the development environment, follow these steps:
     git clone https://github.com/JayRay5/DIVE-Doc
     cd DIVE-Doc
     ```
-2.  **Create a conda environment (recommended):**
+2.  **Create a conda environment:**
     ```bash
     conda create -n dive-doc-env python=3.11.5
     conda activate dive-doc-env
@@ -161,7 +161,7 @@ python test.py
 ```
 It will save the score as a JSON file in the "./experiments/model_{m}/dla/" folder.
 ## Citation
-If you find DIVE-Doc useful for your research, please consider citing our paper:
+If you find DIVE-Doc useful for your research, please cite:
 
 ```bibtex
 #TO COMPLET
