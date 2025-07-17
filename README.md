@@ -17,9 +17,9 @@ The trained models presented in the paper can be downloaded on HuggingFace.
 
 | Model                    | VE Latency (ms)| ANLS Score ↑ | Download |
 |--------------------------|--------------|----------------|-----|
-| **DIVE-Doc (FRD)**       | 446     | **82.67**  |   [🤗 Hugging Face](https://huggingface.co)  |
-| **DIVE-Doc (ARD/HRes)**  | 520     | 82.63        |  [🤗 Hugging Face](https://huggingface.co)   |
-| **DIVE-Doc (ARD/LRes)**  | **270**    | 79.26       |   [🤗 Hugging Face](https://huggingface.co)  |
+| **DIVE-Doc (FRD)**       | 446     | **82.67**  |   [🤗 Hugging Face](https://huggingface.co/JayRay5/DIVE-Doc-FRD)  |
+| **DIVE-Doc (ARD/HRes)**  | 520     | 82.63        |  [🤗 Hugging Face](https://huggingface.co/JayRay5/DIVE-Doc-ARD-HRes)   |
+| **DIVE-Doc (ARD/LRes)**  | **270**    | 79.26       |   [🤗 Hugging Face](https://huggingface.co/JayRay5/DIVE-Doc-ARD-LRes)  |
 
 
 
@@ -29,7 +29,7 @@ To set up the development environment, follow these steps:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/JayRay5/DIVE-Doc](https://github.com/JayRay5/DIVE-Doc)
+    git clone https://github.com/JayRay5/DIVE-Doc
     cd DIVE-Doc
     ```
 2.  **Create a conda environment (recommended):**
@@ -164,9 +164,6 @@ It will save the score as a JSON file in the "./experiments/model_{m}/dla/" fold
 If you find DIVE-Doc useful for your research, please consider citing our paper:
 
 ```bibtex
-@inproceedings{your_paper_id,
-  author = {Anonymous ICCV Submission}, % Replace with actual authors after blind review
-  title = {DIVE-Doc: Downscaling foundational Image Visual Encoder into hierarchical architecture for DocVQA},
-  booktitle = {Proceedings of the ICCV Workshop on Vision and Document Intelligence}, % Update with actual workshop name if different
-  year = {2025} % Update with actual publication year
+#TO COMPLET
+@inproceedings{
 }
