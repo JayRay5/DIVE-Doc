@@ -15,7 +15,7 @@ from accelerate import infer_auto_device_map, dispatch_model
 from models.model import DIVEdoc
 
 def app(path):
-    model = DIVEdoc.from_pretrained(path,torch_dtype=torch.float16)
+    model = DIVEdoc.from_pretrained(path)
     with open("./token.json", "r") as f:
             hf_token = json.load(f)["HF_token"]
 
@@ -26,7 +26,7 @@ def app(path):
     processor.image_processor.size = {'height': image_input_resolution[0], 'width': image_input_resolution[1]}
 
     if torch.cuda.is_available():
-        device_map = infer_auto_device_map(model,max_memory={0: "5GiB"}, 
+        device_map = infer_auto_device_map(model,max_memory={0: "6GiB"}, 
                                             no_split_module_classes=["DonutSwinStage","GemmaDecoderLayer"])
             
         model = dispatch_model(model,device_map)
@@ -36,7 +36,7 @@ def app(path):
     def answer_question(image, question):
         # Process the image and question
         model_inputs = processor(text=question, images=image, return_tensors="pt",padding=True)
-        model_inputs = model_inputs.to(model.device,dtype=torch.float16)
+        model_inputs = model_inputs.to(model.device,dtype=model.dtype)
         input_len = model_inputs["input_ids"].shape[-1]
 
         # Answer generation
