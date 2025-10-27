@@ -165,5 +165,11 @@ If you find DIVE-Doc useful for your research, please cite:
 
 ```bibtex
 #TO COMPLET
-@inproceedings{
+@inproceedings{Bencharef_2025_ICCV,
+    author    = {Bencharef, Rayane and Rahiche, Abderrahmane and Cheriet, Mohamed},
+    title     = {DIVE-Doc: Downscaling foundational Image Visual Encoder into hierarchical architecture for DocVQA},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV) Workshops},
+    month     = {October},
+    year      = {2025},
+    pages     = {7547-7556}
 }
