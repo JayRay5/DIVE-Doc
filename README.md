@@ -164,7 +164,6 @@ It will save the score as a JSON file in the "./experiments/model_{m}/dla/" fold
 If you find DIVE-Doc useful for your research, please cite:
 
 ```bibtex
-#TO COMPLET
 @inproceedings{Bencharef_2025_ICCV,
     author    = {Bencharef, Rayane and Rahiche, Abderrahmane and Cheriet, Mohamed},
     title     = {DIVE-Doc: Downscaling foundational Image Visual Encoder into hierarchical architecture for DocVQA},
