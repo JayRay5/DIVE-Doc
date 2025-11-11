@@ -20,6 +20,8 @@ The trained models presented in the paper can be downloaded on HuggingFace.
 | **DIVE-Doc (FRD)**       | 446     | **82.67**  |   [🤗 Hugging Face](https://huggingface.co/JayRay5/DIVE-Doc-FRD)  |
 | **DIVE-Doc (ARD/HRes)**  | 520     | 82.63        |  [🤗 Hugging Face](https://huggingface.co/JayRay5/DIVE-Doc-ARD-HRes)   |
 | **DIVE-Doc (ARD/LRes)**  | **270**    | 79.26       |   [🤗 Hugging Face](https://huggingface.co/JayRay5/DIVE-Doc-ARD-LRes)  |
+
+
 Latency values are computed using a GeForce RTX 2080ti
 
 
