@@ -1,4 +1,5 @@
-# DIVE-Doc: Downscaling foundational Image Visual Encoder into hierarchical architecture for DocVQA | Official implementation 
+<h1 align="center"> DIVE-Doc: Downscaling foundational Image Visual Encoder into hierarchical architecture for DocVQA | Official implementation </h1>
+
 ![Description of image](./iccv-navbar-logo.svg)
 
 ## Description
