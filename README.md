@@ -1,6 +1,8 @@
 # DIVE-Doc: Downscaling foundational Image Visual Encoder into hierarchical architecture for DocVQA 
 <div align="center">Official implementation of DIVE-Doc </div>
-![Description of image](iccv-navbar-logo.svg)
+
+![Description of image](./iccv-navbar-logo.svg)
+
 ## Description
 
 **DIVE-Doc** is an end-to-end trade-off between LVLMs and lightweight architectures in the context of DocVQA. It is built by distilling the SigLIP-400m visual encoder of PaliGEMMA into a small hierarchical Swin transformer, while reusing the original GEMMA decoder. This allowed DIVE-Doc to keep competitive performance with its teacher while reducing the visual encoder's parameters to one-fifth.
